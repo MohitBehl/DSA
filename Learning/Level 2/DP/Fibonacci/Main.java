@@ -1,6 +1,10 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String args[]){
-        fibonacci();
+        // fibonacci();
+        sample();
     }
     public static void fibonacci(){
         Scanner scn = new Scanner(System.in);
@@ -46,7 +50,19 @@ public class Main {
             dp[n] = res;
         }
         
-        return dp[n];
+        return dp[N];
+    }
+
+    static void sample(){
+        LinkedList<Integer> ll = new LinkedList<>();
+
+        ll.addFirst(1);
+        ll.addLast(2);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.addFirst(6);
+        ll.node(1);
     }
     
 }
