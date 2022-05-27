@@ -76,6 +76,7 @@ public class Main{
         return slow; // head of cycle
     }
     
+    
     // Floyd Cycle : Remove loop in Linked List , GFG
         /*
         class Node
@@ -111,5 +112,51 @@ public class Main{
         }
         // curr will be at start of loop & prev just before it
         prev.next != null; 
+    }
+
+
+    // Floyd Cycle : Find length of Loop , GFG
+    /*
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int d) {data = d; next = null; }
+    }
+    */
+    public Node getStartOfCycle(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        Node hasCycle = false;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                hasCycle = true;
+                break;
+            }
+        }
+        if(! hasCycle) return null; // no cycle
+
+        Node tmp = head;
+        while(tmp != slow){
+            slow = slow.next;
+            tmp = tmp.next;
+        }
+
+        return slow; // head of cycle
+    }
+    static int countNodesinLoop(Node head){
+        Node startNode = getStartOfCycle(head);
+        if(startNode == null) return 0;
+        int count = 0;
+        Node tmp = startNode;
+        while(true){
+            tmp = tmp.next;
+            count++;
+            if(tmp == startNode) return count;
+        }
     }
 }
