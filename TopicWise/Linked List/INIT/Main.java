@@ -76,4 +76,40 @@ public class Main{
         return slow; // head of cycle
     }
     
+    // Floyd Cycle : Remove loop in Linked List , GFG
+        /*
+        class Node
+        {
+            int data;
+            Node next;
+        }
+        */
+    public static void removeLoop(Node head){
+        // find node just before head of cycle & then break the loop 
+        ListNode slow = head;
+        ListNode fast = head;
+
+        boolean hasCycle = false;
+        ListNode prev = null;
+        while(fast != null && fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                hasCycle = true;
+                break;
+            }
+        }
+        if(! hasCycle) return; // no cycle
+
+        ListNode curr = head;
+        while(curr != slow){
+            prev = slow;
+            slow = slow.next;
+            curr = curr.next;
+        }
+        // curr will be at start of loop & prev just before it
+        prev.next != null; 
+    }
 }
