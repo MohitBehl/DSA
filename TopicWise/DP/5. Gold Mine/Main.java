@@ -126,8 +126,7 @@ public class Main{
         for(int r = 0 , c = 1 ; r < mat.length ; r++){
             // ans = Math.max(ans,goldMine_rec(r,c,mat));
             ans = Math.max(ans,mem[r][c]);
-        }
-        return ans;
+        }return ans;
     }
 }
 /*
