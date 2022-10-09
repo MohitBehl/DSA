@@ -28,7 +28,8 @@ class L000{
         }
 
         // System.out.println(Arrays.toString(graph));
-        printAllPath(graph,0,2,new boolean[nvtces],"0");
+        // printAllPath(graph,0,2,new boolean[nvtces],"0");
+        System.out.println(gcc(graph));
     }
 
     public static boolean hasPath(ArrayList<Edge>[]graph,int vtx,int dest,boolean vis[]){
@@ -61,7 +62,44 @@ class L000{
         }
         vis[vtx] = false;
     }
+
+    public static ArrayList<ArrayList<Integer>> gcc(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for(int vtx = 0 ; vtx < vis.length ; vtx++){
+            if(!vis[vtx]){
+                ArrayList<Integer> compList = new ArrayList<>();
+                compWiseDFS(graph,vtx,vis,compList);
+                res.add(compList);
+            } 
+        }
+        return res;
+    }
+
+    public static void compWiseDFS(ArrayList<Edge>[] graph,int vtx,boolean vis[],ArrayList<Integer> compList){
+        vis[vtx] = true;
+        compList.add(vtx);
+        for(Edge e : graph[vtx]){
+            if(!vis[e.nbr]) compWiseDFS(graph,e.nbr,vis,compList);
+        }
+    }
+
+    public static boolean isGraphConnected(ArrayList<Edge>[] graph){
+        return (gcc(graph).size() == 1);
+    }
 }
+/*
+9
+7
+0 1
+0 2
+1 2
+3 4
+4 5
+6 7
+6 8
+*/
+
 /*
 4
 6
