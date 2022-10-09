@@ -29,7 +29,8 @@ class L000{
 
         // System.out.println(Arrays.toString(graph));
         // printAllPath(graph,0,2,new boolean[nvtces],"0");
-        System.out.println(gcc(graph));
+        // System.out.println(gcc(graph));
+        BFS(graph,2);
     }
 
     public static boolean hasPath(ArrayList<Edge>[]graph,int vtx,int dest,boolean vis[]){
@@ -86,6 +87,58 @@ class L000{
 
     public static boolean isGraphConnected(ArrayList<Edge>[] graph){
         return (gcc(graph).size() == 1);
+    }
+    public static class BFSPair{
+        int vtx;
+        String psf;
+        BFSPair(int vtx,String psf){
+            this.vtx = vtx;
+            this.psf = psf;
+        }
+    }
+    public static void BFS(ArrayList<Edge>[] graph,int src){
+        Queue<BFSPair> queue = new ArrayDeque<>();
+        queue.add(new BFSPair(src,""+src));
+        boolean vis[] = new boolean[graph.length];
+        while(queue.size() > 0){
+            BFSPair rem = queue.remove();
+
+            if(vis[rem.vtx] == false){
+                vis[rem.vtx] = true;
+
+                System.out.println(rem.vtx+"@"+rem.psf);
+
+                for(Edge e : graph[rem.vtx]){
+                    if(!vis[e.nbr]){
+                        queue.add(new BFSPair(e.nbr,rem.psf+e.nbr));
+                    }
+                }
+            }
+        }
+    }
+
+    public static boolean isCyclic(ArrayList<Edge>[] graph){
+        int src = 0;
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(src);
+        boolean vis[] = new boolean[graph.length];
+        while(queue.size() > 0){
+            int rem = queue.remove();
+
+            if(vis[rem] == false){
+                vis[rem] = true;
+
+                for(Edge e : graph[rem]){
+                    if(!vis[e.nbr]){
+                        queue.add(e.nbr);
+                    }
+                }
+            }else{
+                // multiple ways to reach same vtx -> cyclic 
+                return true;
+            }
+        }
+        return false;
     }
 }
 /*
