@@ -27,9 +27,51 @@ class L000{
             graph[v2].add(new Edge(v2,v1));
         }
 
-        System.out.println(Arrays.toString(graph));
+        // System.out.println(Arrays.toString(graph));
+        printAllPath(graph,0,2,new boolean[nvtces],"0");
+    }
+
+    public static boolean hasPath(ArrayList<Edge>[]graph,int vtx,int dest,boolean vis[]){
+        if(vtx == dest){
+            return true;
+        }
+
+        vis[vtx] = true;
+        for(Edge e : graph[vtx]){
+            if(!vis[e.nbr]){
+                boolean rres = hasPath(graph,e.nbr,dest,vis);
+                if(rres) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void printAllPath(ArrayList<Edge>[]graph,int vtx,int dest,boolean vis[],String psf){
+        if(vtx == dest){
+            System.out.println(psf);
+            return;
+        }
+
+        vis[vtx] = true;
+        for(Edge e : graph[vtx]){
+            if(!vis[e.nbr]){
+                printAllPath(graph,e.nbr,dest,vis,psf+e.nbr);
+            }
+        }
+        vis[vtx] = false;
     }
 }
+/*
+4
+6
+0 1
+0 2
+0 3
+1 2
+3 2
+1 3
+*/
 
 /*
 7
