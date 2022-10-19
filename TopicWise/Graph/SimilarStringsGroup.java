@@ -32,14 +32,25 @@ class Solution {
                     par[idx1L] = idx2L;
                 }else{
                     par[idx1L] = idx2L;
-                    rank[idx2L]++:
+                    rank[idx2L]++;
                 }
                 groups--;
             }
         }
         public boolean isSimilar(String[] strs,int idx1,int idx2){
-
-        }
+            String w1 = strs[idx1];
+            String w2 = strs[idx2];
+            int count = 0;
+            for(int i = 0 ; i < w1.length() ; i++){
+                if(w1.charAt(i) != w2.charAt(i)){
+                    count++;
+                }
+                if(count == 3){
+                    return false;
+                }
+            }
+            return true;
+        }   
     }
     
     public int numSimilarGroups(String[] strs) {
@@ -47,6 +58,7 @@ class Solution {
         for(int i = 0 ; i < strs.length ; i++){
             for(int j = i+1 ; j < strs.length ; j++){
                 uf.union(i,j);
+                if(uf.groups == 1) return 1;
             }
         }
         return uf.groups;
