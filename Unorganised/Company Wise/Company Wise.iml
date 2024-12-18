@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/12. Integer to Roman" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/1275. Find Winner on a Tic Tac Toe Game" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/1710 Max units on a truck" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/387. First Unique Character in a String" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/49. Group Anagrams" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/56. Merge Intervals" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/696 Count Binary Substrings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1. Amazon/79. Word Search" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
