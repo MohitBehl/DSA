@@ -1,7 +1,0 @@
-/**
- * Solution
- */
-public class Solution {
-
-    
-}
